@@ -13151,7 +13151,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -13441,7 +13441,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Total number of records</span>
@@ -13534,7 +13534,7 @@ Percentage of individuals making more than $50,000: 24.78439697492371%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Split the data into features and target label</span>
@@ -13583,7 +13583,7 @@ Percentage of individuals making more than $50,000: 24.78439697492371%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Log-transform the skewed features</span>
@@ -13633,7 +13633,7 @@ Percentage of individuals making more than $50,000: 24.78439697492371%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import sklearn.preprocessing.StandardScaler</span>
@@ -13857,15 +13857,18 @@ Percentage of individuals making more than $50,000: 24.78439697492371%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: One-hot encode the &#39;features_log_minmax_transform&#39; data using pandas.get_dummies()</span>
 <span class="n">features_final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">features_log_minmax_transform</span><span class="p">)</span>
 
-<span class="c1"># TODO: Encode the &#39;income_raw&#39; data to numerical values</span>
-<span class="n">income</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">income_raw</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;&lt;=50K&quot;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">))</span> 
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">LabelEncoder</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 
+<span class="c1"># TODO: Encode the &#39;income_raw&#39; data to numerical values</span>
+<span class="n">income</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">income_raw</span><span class="p">))</span> 
+<span class="c1">#</span>
 <span class="c1"># Print the number of features after one-hot encoding</span>
 <span class="n">encoded</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">features_final</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> total features after one-hot encoding.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">encoded</span><span class="p">)))</span>
@@ -13895,7 +13898,7 @@ Percentage of individuals making more than $50,000: 24.78439697492371%
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -13918,7 +13921,7 @@ Percentage of individuals making more than $50,000: 24.78439697492371%
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>income</th>
+      <th>0</th>
     </tr>
   </thead>
   <tbody>
@@ -14574,7 +14577,16 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: We chosen AdaBoost classifier as the final model, AdaBoost classifier is a combination of small classifiers that makes a big strong classifier, in training every small classifier try to fit the data with minimum error and fix the mistakes from the previous classifier and finally combine the small classifiers into a single strong classifier. it predicts the new samples based on the combined result from the single strong learner.</strong></p>
+<p><strong>Answer:</strong> 
+We chose AdaBoost classifier as the final model, AdaBoost classifier simply is a combination of weak learner that makes a big strong classifier or learner.</p>
+<h3 id="A-Good-Weak-Learner">A Good Weak Learner<a class="anchor-link" href="#A-Good-Weak-Learner">&#182;</a></h3><p>A weak learner is any machine learning algorithm that gives better accuracy than simply guessing. This means the weak learner should be good at classifying one thing and at least more accurate than random guessing.
+For example:
+If we have a question and we have five friends one good at math questions only and another one at physics questions only<br>
+and another one at chemistry questions only and another one at history questions only and other one good at computer questions only<br>
+if we bring these friends together and told everyone to only answer the questions they are good at, we could call this group of friends strong learner or strong classifier because they can answer Math, Physics, Chemistry, Computer and history questions.</p>
+<p>In training, every small classifier tries to fit the data with minimum error and fix the mistakes from the previous classifier and finally combine the small classifiers into a single strong classifier. it predicts the new samples based on the combined result from the single strong learner.</p>
+<p>Any machine learning routine can be used as a weak learner. Neural nets, support vector machines or any other would work, but the most commonly used weak learner is the decision tree</p>
+<p>A Decision Tree is a predictive model that can learn to predict outputs by answering a set of simple questions based on the values of the inputs it receives.</p>
 
 </div>
 </div>
